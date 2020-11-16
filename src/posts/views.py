@@ -22,7 +22,7 @@ def post_detail(request, pk):
 
     return render(request, 'posts/post_detail.html', context)
 
-@login_required()
+
 def post_update(request, pk):
     user = request.user
     post = Posts.objects.get(pk=pk)
@@ -43,7 +43,6 @@ def post_update(request, pk):
 
     return render(request, 'posts/update_post.html', context)
 
-@login_required()
 def post_delete(request, pk):
     user = request.user
     post = Posts.objects.get(pk=pk)

@@ -12,6 +12,7 @@
             {% for p in posts  %}
                 <div class="col-4">
 
+
                     <div class="card bg-dark">
                         <div class="card-header">
                             <p class="text-uppercase"><a href="{% url 'posts:detail-post' p.pk %}">{{ p.title }}</a></p>
