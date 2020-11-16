@@ -24,7 +24,10 @@ def user_login(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('posts:all-posts')
+            if 'next' in request.POST:
+                return redirect(request.GET.get('next')) 
+            else:
+                return redirect('posts:all-posts')
 
     context = {
         'form': form
@@ -35,9 +38,9 @@ def user_login(request):
 def user_logout(request):
     user = request.user
 
-    # if request.method == 'POST':
-    #     logout(request)
-    #     return redirect('posts:all-posts')
+    if request.method == 'POST':
+        logout(request)
+        return redirect('posts:all-posts')
 
     context = {
         'user': user

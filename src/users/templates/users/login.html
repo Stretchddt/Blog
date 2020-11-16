@@ -19,7 +19,13 @@
                     {% csrf_token %}
                     {{ form|crispy }}
                     <button type="submit" class='btn btn-lg btn-outline-success'>Login</button>
+                    {% if request.GET.next %}
+                        <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    {% endif %}
                 </form>
+
+                <br>
+                <p class="text-primary">Need an account? <a href="{% url 'users:register' %}">Register</a> </p>
 
             </div>
         </div>
