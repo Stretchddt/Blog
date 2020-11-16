@@ -19,7 +19,7 @@ def user_registration(request):
     return render(request, 'users/register.html', context)
 
 def user_login(request):
-    form = AuthenticationForm(request.POST or None)
+    form = AuthenticationForm(data=request.POST or None)
 
     if request.method == 'POST':
         if form.is_valid():
