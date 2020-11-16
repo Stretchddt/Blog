@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Posts
+{% endblock title %}
+
+{% block content %}
+    
+    <br>
+    <div class="container">
+        <div class="row">
+            {% for p in posts  %}
+                <div class="col-4">
+
+                    <div class="card bg-dark">
+                        <div class="card-header">
+                            <p class="text-uppercase"><a href="{% url 'posts:detail-post' p.pk %}">{{ p.title }}</a></p>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-success">{{ p.content|slice:":50" }}</p> 
+                        </div>
+                        <div class="card-footer">
+                            <p class="text-primary">Author: {{ p.author }}</p>
+                            <p class="text-primary">Created at: {{ p.created }}</p>
+                            <p class="text-primary">Updated at: {{ p.updated }}</p>
+                        </div>
+                    </div>
+
+                    <br>
+
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}

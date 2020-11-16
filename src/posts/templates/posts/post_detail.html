@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Post Detail - {{ post.pk }}
+{% endblock title %}
+
+{% block content %}
+
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+
+                            <div class="card bg-dark">
+                                <div class="card-header">
+                                    <p class='text-primary'>{{ post.title }}</p>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-success">{{ post.content }}</p>
+                                </div>
+                                <div class='card-footer'>
+                                    <p class="text-primary">Author: {{ post.author }}</p>
+                                    <p class="text-primary">Created at: {{ post.created }}</p>
+                                    <p class="text-primary">Updated at: {{ post.updated }}</p>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <a class="btn btn-outline-success" href="{% url 'posts:all-posts' %}">Back</a>
+                            <a class="btn btn-outline-success" href="{% url 'posts:update-post' post.pk %}">Update</a>
+                            <a class="btn btn-outline-danger" href="{% url 'posts:delete-post' post.pk %}">Delete</a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

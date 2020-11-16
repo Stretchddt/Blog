@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Logout
+{% endblock title %}
+
+{% block content %}
+
+    <br>
+    <div class="container">
+        <div class='row'>
+            <div class="col">
+
+                <p class="text-center text-danger display-1">Are you sure you want to logout {{ user }}?</p>
+
+                <form action="" method="post" class="text-center">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-lg btn-outline-danger">Yes</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

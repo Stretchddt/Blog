@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Delete Post
+{% endblock title %}
+
+{% block content %}
+
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% if user == post.author  %}
+
+                <p class='text-center display-1 text-outline-danger'>Are you sure you want to delete {{ post.title }}?</p>
+
+                <form action="" method="post">
+                    <a class="btn btn-bg btn-outline-success" href="{% url 'posts:detail-post' post.pk %}">Cancel</a>
+                    <button type="submit" class="btn btn-bg btn-outline-danger">Delete</button>
+                </form>
+
+                {% else %}
+
+                    <p class="text-center display-1 text-danger">You must be the author to delete this post</p>
+
+                    <div class="text-center">
+                        <a class="btn btn-bg btn-outline-success" href="{% url 'posts:detail-post' post.pk %}">Cancel</a>
+                    </div>
+
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

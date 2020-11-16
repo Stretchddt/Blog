@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    My Profile
+{% endblock title %}
+
+{% block content %}
+    
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <div class="card bg-dark">
+
+                    <div class="card-header">
+                        <p class="text-center text-success display-3">Welcome to your profile {{ profile.first_name }}</p> 
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3">
+
+                                    <p class='text-success'>First Name: {{ profile.first_name }}</p>
+                                    <p class='text-success'>Middle Name: {{ profile.middle_name }}</p>
+                                    <p class='text-success'>Last Name: {{ profile.last_name }}</p>
+                                    <p class='text-success'>Email: {{ profile.email }}</p>
+                                    <p class='text-success'>Country: {{ profile.country }}</p>
+                                    <p class='text-success'>Your profile was created at: {{ profile.created }}</p>
+                                    <p class='text-success'>Your profilewas updated at: {{ profile.updated }}</p>
+
+
+                                </div>
+                                <div class="col-6">
+                                    <img class='mx-auto d-block' src="{{ profile.avatar.url }}" alt="your profile photo">
+                                </div>
+                                <div class="col-3">
+                                    <p class="text-success">Bio: {{ profile.bio }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="card-footer">
+                        
+                        <p class='text-danger'>Would you like to update your profile?</p> 
+                        <p>
+                        <button class="btn btn-outline-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Update
+                        </button>
+                        </p>
+                        <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                           <form action="" method="post" enctype='multipart/form-data'>
+                               {% csrf_token %}
+                               {{ form|crispy }}
+                               <button type="submit" class="btn btn-outline-success">Update</button>
+                           </form>
+                        </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

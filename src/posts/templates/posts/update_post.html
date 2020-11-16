@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Update
+{% endblock title %}
+
+{% block content %}
+
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% if user == post.author %}
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <a href="{% url 'posts:detail-post' post.pk %}" class='btn btn-outline-primary'>Back</a>
+                        <button type="submit" class="btn btn-outline-primary">Update</button>
+                    </form>
+                {% else %}
+                    <p class="text-danger text-center display-1">You must be the author to edit this post</p>
+                    <div class="text-center">
+                        <a href="{% url 'posts:detail-post' post.pk %}" class='btn btn-lg btn-outline-primary'>Back</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

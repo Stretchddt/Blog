@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Create Post
+{% endblock title %}
+
+{% block content %}
+
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <a class='btn btn-outline-success' href="{% url 'posts:all-posts' %}">Cancel</a>
+                    <button class='btn btn-outline-success'>Create</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
